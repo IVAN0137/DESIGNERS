@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="logo.png" type="image/x-icon">
+    <title>DESIGNERS</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="letras.css">
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <img src="logo.png" alt="Logo" id="logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#proyectos">Proyectos</a></li>
+                    <li><a href="#habilidades">Habilidades</a></li>
+                    <li><a href="#sobre-mi">Sobre Mí</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+            <div class="theme-switch-wrapper">
+                <label class="theme-switch" for="checkbox">
+                    <input type="checkbox" id="checkbox" />
+                    <div class="slider round"></div>
+                </label>
+                <em>Cambiar Tema</em>
+            </div>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="inicio" class="hero">
+            <div class="container">
+                <h1>DESIGNERS</h1>
+                <p>Desarrolladores web</p>
+                <a href="#contacto" class="cta-button">Contáctanos</a>
+            </div>
+        </section>
+
+        <section id="servicios">
+            <div class="container">
+                <h2>Mis Servicios</h2>
+                <div class="servicios-grid">
+                    <div class="servicio">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Diseño Web</h3>
+                        <p>Creación de sitios web atractivos y funcionales que capturan la esencia de tu marca.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h3>Diseño Responsivo</h3>
+                        <p>Desarrollo de sitios web adaptables a todos los dispositivos para una experiencia de usuario óptima.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-search"></i>
+                        <h3>SEO</h3>
+                        <p>Optimización para motores de búsqueda para mejorar la visibilidad de tu sitio web.</p>
+                    </div>
+                    <div class="servicio">
+                        <i class="fas fa-paint-brush"></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Diseño de interfaces intuitivas y experiencias de usuario atractivas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+       
+
+        <section id="habilidades">
+            <div class="container">
+                <h2>Mis Habilidades</h2>
+                <div class="habilidades-grid">
+                    <div class="habilidad">
+                        <h3>HTML5</h3>
+                        <div class="barra-progreso">
+                            <div class="progreso" style="width: 95%;"></div>
+                        </div>
+                    </div>
+                    <div class="habilidad">
+                        <h3>CSS3</h3>
+                        <div class="barra-progreso">
+                            <div class="progreso" style="width: 90%;"></div>
+                        </div>
+                    </div>
+                    <div class="habilidad">
+                        <h3>JavaScript</h3>
+                        <div class="barra-progreso">
+                            <div class="progreso" style="width: 85%;"></div>
+                        </div>
+                    </div>
+                    <div class="habilidad">
+                        <h3>React</h3>
+                        <div class="barra-progreso">
+                            <div class="progreso" style="width: 80%;"></div>
+                        </div>
+                    </div>
+                    <div class="habilidad">
+                        <h3>Node.js</h3>
+                        <div class="barra-progreso">
+                            <div class="progreso" style="width: 75%;"></div>
+                        </div>
+                    </div>
+                    <div class="habilidad">
+                        <h3>SQL</h3>
+                        <div class="barra-progreso">
+                            <div class="progreso" style="width: 70%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sobre-mi">
+            <div class="container">
+                <h2>Sobre Mí</h2>
+                <div class="sobre-mi-content">
+                    <img src="logo.png" alt="Tu Nombre">
+                    <div>
+                        <p>Somos desarrolladores web apasionados y con experiencia en la creación de experiencias digitales únicas y funcionales. Nos especializamos en diseñar y desarrollar sitios web que no solo se ven geniales, sino que también cumplen con los objetivos de negocio de nuestros clientes.</p>
+                        <p>Nuestro enfoque se centra en la combinación de diseño atractivo y funcionalidad robusta, siempre manteniendo las mejores prácticas de desarrollo y las últimas tendencias en tecnología web.</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto">
+            <div class="container">
+                <h2>Contáctame</h2>
+                <form id="contactForm">
+                    <input type="text" name="nombre" placeholder="Tu nombre" required>
+                    <input type="email" name="email" placeholder="Tu email" required>
+                    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
+                    <button type="submit" class="cta-button">Enviar Mensaje</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 DESIGNERS. Todos los derechos reservados.</p>
+           
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
