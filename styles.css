@@ -1,25 +1,25 @@
 :root {
     --primary-color: #3498db;
-    --secondary-color: #2c3e50;
+    --secondary-color: #000000;
     --accent-color: #e74c3c;
     --background-color: #f4f4f4;
-    --text-color: #333;
+    --text-color: #000000;
     --card-bg: #ffffff;
     --header-bg: #ffffff;
-    --footer-bg: #2c3e50;
-    --footer-text: #ffffff;
+    --footer-bg: #ff00ee00;
+    --footer-text: #000000;
 }
 
 [data-theme="dark"] {
-    --primary-color: #3498db;
+    --primary-color: #07ff17;
     --secondary-color: #34495e;
     --accent-color: #e74c3c;
     --background-color: #1a1a1a;
-    --text-color: #f4f4f4;
+    --text-color: #07ff17;
     --card-bg: #2c2c2c;
     --header-bg: #2c2c2c;
-    --footer-bg: #1a1a1a;
-    --footer-text: #f4f4f4;
+    --footer-bg: #1a1a1a00;
+    --footer-text: #07ff17;
 }
 
 * {
@@ -132,7 +132,7 @@ h1, h2, h3 {
 }
 
 .cta-button:hover {
-    background-color: #2980b9;
+    background-color: #ad29b9;
 }
 
 .servicios-grid, .proyectos-grid {
@@ -358,3 +358,47 @@ input:checked + .slider:before {
         padding: 1.5rem;
     }
 }
+
+.social-links {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.social-links a {
+    color: var(--footer-text);
+    font-size: 2rem;
+    margin: 0 15px;
+    transition: color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+}
+
+.social-links a:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
+}
+
+.social-icon i {
+    font-size: 2rem; /* Tamaño del icono */
+}
+
+.social-links a.facebook:hover {
+    color: #3b5998; /* Color para el hover de Facebook */
+}
+
+.social-links a.twitter:hover {
+    color: #1da1f2; /* Color para el hover de Twitter */
+}
+
+.social-links a.instagram:hover {
+    color: #e4405f; /* Color para el hover de Instagram */
+}
+
+.social-links a.linkedin:hover {
+    color: #0077b5; /* Color para el hover de LinkedIn */
+}
+nav.active {
+    display: block;
+}
+
+

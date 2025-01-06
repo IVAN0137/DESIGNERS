@@ -1,134 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Elementos del DOM
-    const header = document.querySelector('header');
-    const menuToggle = document.querySelector('.menu-toggle');
-    const nav = document.querySelector('nav');
-    const links = document.querySelectorAll('nav a');
-    const sections = document.querySelectorAll('section');
-    const contactForm = document.getElementById('contactForm');
-    const themeToggle = document.getElementById('checkbox');
-
-    // Función para manejar el scroll y actualizar la navegación
-    function handleScroll() {
-        const scrollPosition = window.scrollY;
-
-        // Cambiar estilo del header al hacer scroll
-        if (scrollPosition > 50) {
-            header.classList.add('scrolled');
-        } else {
-            header.classList.remove('scrolled');
-        }
-
-        // Actualizar link activo en la navegación
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 100;
-            const sectionHeight = section.clientHeight;
-            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                links.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href').slice(1) === section.id) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        });
-    }
-
-    // Event listener para el scroll
-    window.addEventListener('scroll', handleScroll);
-
-    // Navegación suave al hacer clic en los links
-    links.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href').slice(1);
-            const targetSection = document.getElementById(targetId);
-            window.scrollTo({
-                top: targetSection.offsetTop - 80,
-                behavior: 'smooth'
-            });
-            // Cerrar menú móvil si está abierto
-            if (nav.classList.contains('active')) {
-                nav.classList.remove('active');
-            }
-        });
+    // Cambio de tema oscuro
+    const themeSwitch = document.getElementById('checkbox');
+    themeSwitch.addEventListener('change', () => {
+        document.body.setAttribute('data-theme', themeSwitch.checked ? 'dark' : 'light');
+        localStorage.setItem('theme', themeSwitch.checked ? 'dark' : 'light');
     });
 
-    // Toggle del menú móvil
+    // Restaurar tema desde localStorage
+    if (localStorage.getItem('theme') === 'dark') {
+        document.body.setAttribute('data-theme', 'dark');
+        themeSwitch.checked = true;
+    }
+
+    // Menú responsive
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('nav');
+    const navLinks = document.querySelectorAll('nav ul li a');
+
+    // Al hacer clic en el icono del menú, mostrar u ocultar el menú
     menuToggle.addEventListener('click', () => {
         nav.classList.toggle('active');
     });
 
-    // Animación de las barras de progreso de habilidades
-    function animateSkills() {
-        const skillBars = document.querySelectorAll('.progreso');
-        skillBars.forEach(bar => {
-            const targetWidth = bar.style.width;
-            bar.style.width = '0%';
-            setTimeout(() => {
-                bar.style.width = targetWidth;
-            }, 100);
+    // Si se hace clic en un enlace de navegación, cerramos el menú
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
         });
-    }
+    });
 
-    // Observador de intersección para animar las habilidades cuando sean visibles
-    const skillsSection = document.getElementById('habilidades');
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                animateSkills();
-                observer.unobserve(entry.target);
+    // Scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', (e) => {
+            e.preventDefault();
+            document.querySelector(anchor.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Botón para volver arriba
+    const scrollToTop = document.createElement('button');
+    scrollToTop.textContent = '↑';
+    scrollToTop.classList.add('scroll-to-top');
+    document.body.appendChild(scrollToTop);
+
+    window.addEventListener('scroll', () => {
+        scrollToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+    });
+
+    scrollToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Animación de barras de progreso
+    const barras = document.querySelectorAll('.barra-progreso .progreso');
+    const opciones = { threshold: 0.5 };
+    const observador = new IntersectionObserver((entradas) => {
+        entradas.forEach(entrada => {
+            if (entrada.isIntersecting) {
+                entrada.target.style.width = entrada.target.getAttribute('style').split(':')[1];
             }
         });
-    }, { threshold: 0.5 });
+    }, opciones);
 
-    observer.observe(skillsSection);
-
-    // Manejo del formulario de contacto
-    contactForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const formData = new FormData(contactForm);
-        const response = await fetch('/api/enviar-email', {
-            method: 'POST',
-            body: JSON.stringify(Object.fromEntries(formData)),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const result = await response.json();
-        if (result.success) {
-            alert('Mensaje enviado con éxito!');
-            contactForm.reset();
-        } else {
-            alert('Hubo un error al enviar el mensaje. Por favor, intenta de nuevo.');
-        }
-    });
-
-    // Cambio de tema (claro/oscuro)
-    function setTheme(isDark) {
-        document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-    }
-
-    // Verificar preferencia de tema guardada
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-        setTheme(savedTheme === 'dark');
-        themeToggle.checked = savedTheme === 'dark';
-    } else {
-        // Si no hay preferencia guardada, usar la preferencia del sistema
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        setTheme(prefersDark);
-        themeToggle.checked = prefersDark;
-    }
-
-    themeToggle.addEventListener('change', () => {
-        setTheme(themeToggle.checked);
-    });
-
-    // Actualizar tema si cambia la preferencia del sistema
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        setTheme(e.matches);
-        themeToggle.checked = e.matches;
-    });
+    barras.forEach(barra => observador.observe(barra));
 });

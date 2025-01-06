@@ -6,7 +6,7 @@
     <link rel="icon" href="logo.png" type="image/x-icon">
     <title>DESIGNERS</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="letras.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -23,15 +23,17 @@
                     <li><a href="#habilidades">Habilidades</a></li>
                     <li><a href="#sobre-mi">Sobre Mí</a></li>
                     <li><a href="#contacto">Contacto</a></li>
+                    <li><div class="theme-switch-wrapper">
+                        <label class="theme-switch" for="checkbox">
+                            <input type="checkbox" id="checkbox" />
+                            <div class="slider round"></div>
+                        </label>
+                        <em>Cambiar Tema</em>
+                    </div></li>
                 </ul>
+                
             </nav>
-            <div class="theme-switch-wrapper">
-                <label class="theme-switch" for="checkbox">
-                    <input type="checkbox" id="checkbox" />
-                    <div class="slider round"></div>
-                </label>
-                <em>Cambiar Tema</em>
-            </div>
+           
             <div class="menu-toggle">
                 <i class="fas fa-bars"></i>
             </div>
@@ -136,21 +138,35 @@
         </section>
 
         <section id="contacto">
-            <div class="container">
-                <h2>Contáctame</h2>
-                <form id="contactForm">
-                    <input type="text" name="nombre" placeholder="Tu nombre" required>
-                    <input type="email" name="email" placeholder="Tu email" required>
-                    <textarea name="mensaje" placeholder="Tu mensaje" required></textarea>
-                    <button type="submit" class="cta-button">Enviar Mensaje</button>
-                </form>
+            <div><h1>Contáctanos</h1></div>
+            <div class="social-links">
+                <a href="https://wa.me/524412822828" class="social-icon whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i> <!-- WhatsApp Icon -->
+                </a>
+                
+                <a href="https://facebook.com/people/Designers-MX-Qro/61571502936691/" class="social-icon facebook" target="_blank">
+                    <i class="fab fa-facebook-f"></i> <!-- Facebook Icon -->
+                </a>
+                
+                <a href="#" class="social-icon instagram" target="_blank">
+                    <i class="fab fa-instagram"></i> <!-- Instagram Icon -->
+                </a>
+                <a href="#" class="social-icon linkedin" target="_blank">
+                    <i class="fab fa-linkedin-in"></i> <!-- LinkedIn Icon -->
+                </a>
+                <a href="https://www.tiktok.com/@designers.mx.qro?_t=ZM-8sqOHebJTyI&_r=1" class="social-icon tiktok" target="_blank">
+                    <i class="fab fa-tiktok"></i> <!-- TikTok Icon -->
+                </a>
+            <a href="mailto:designers.mx.qro@gmail.com" class="social-icon gmail" target="_blank">
+                <i class="fab fa-google"></i> <!-- Gmail Icon -->
+            </a>
             </div>
         </section>
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; 2024 DESIGNERS. Todos los derechos reservados.</p>
+            <p>&copy; 2024 Designers_Mx_Qro.</p>
            
         </div>
     </footer>
